@@ -1,0 +1,20 @@
+# PHPをベースにする
+FROM php:8.0-apache
+
+# 必要なパッケージと拡張機能をインストール
+RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev zip git unzip && \
+    docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-install gd pdo pdo_mysql
+
+# Composerをインストール
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Laravelをインストール
+RUN composer global require laravel/installer
+
+# PATHを設定
+ENV PATH="~/.composer/vendor/bin:${PATH}"
+
+# Apacheの設定
+RUN a2enmod rewrite
+COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf

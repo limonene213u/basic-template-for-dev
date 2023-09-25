@@ -1,0 +1,6 @@
+# ApacheとPHPをベースにする
+FROM php:8.0-apache
+
+# JQueryをダウンロードして配置
+RUN apt-get update && apt-get install -y wget unzip && \
+    wget https://code.jquery.com/jquery-3.6.0.min.js -O /var/www/html/jquery.min.js

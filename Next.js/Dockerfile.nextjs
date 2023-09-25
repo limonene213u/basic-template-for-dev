@@ -1,0 +1,15 @@
+# Node.jsをベースにする
+FROM node:16
+
+# 必要なパッケージをインストール
+RUN npm install -g create-next-app
+
+# アプリケーションディレクトリを作成
+WORKDIR /app
+
+# 依存関係をインストール
+COPY ./nextjs-app/package.json ./nextjs-app/package-lock.json ./
+RUN npm install
+
+# アプリケーションのソースをコピー
+COPY ./nextjs-app ./

@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  jquery-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.jquery
+    ports:
+      - "8080:80"
+    volumes:
+      - ./jquery-app:/var/www/html
