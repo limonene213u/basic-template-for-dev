@@ -5,11 +5,44 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    depends_on:
+      - db
     ports:
       - "80:80"
     volumes:
       - ./www:/var/www/html
     #restart: always
 
+  db:
+   image: mariadb
+   environment:
+     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+     MYSQL_DATABASE: ${MYSQL_DATABASE}
+     MYSQL_USER: ${MYSQL_USER}
+     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+     DB_SOCKET: /var/run/mysqld/mysqld.sock
+   volumes:
+     - db_data:/var/lib/mysql
+     - dbsocket:/var/run/mysqld
+   #restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - db
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=${MYSQL_PASSWORD}
+    ports:
+      - "81:80"
+    volumes:
+      - phpmyadmin:/sessions
+    #restart: always
+
 volumes:
   www:
+  db_data:
+  dbsocket:
+  phpmyadmin:

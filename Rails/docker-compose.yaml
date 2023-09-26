@@ -7,7 +7,7 @@ services:
     volumes:
       - ./rails-app:/app
     ports:
-      - "3000:3000"
+      - "3050:3000"
     depends_on:
       - db
   db:

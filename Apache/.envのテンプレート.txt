@@ -1,0 +1,13 @@
+#各自の環境にあわせて入力してください。
+
+MYSQL_ROOT_PASSWORD=[ROOT用のパスワードを入れる]
+MYSQL_DATABASE=[使いたいDB名を入れる]
+MYSQL_USER=[一般USERのUSER名を入れる]
+MYSQL_PASSWORD=[一般USERのパスワードを入れる]
+
+PMA_USER=[MYSQL_USERと同じユーザー名にする]
+PMA_PASSWORD=[MYSQL_PASSWORDと同じパスワードにする]
+
+#基本的には固定の項目
+PMA_ARBITRARY=1
+PMA_HOSTS=db # Docker network内で名前解決するのでこうする
