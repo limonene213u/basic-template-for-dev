@@ -1,4 +1,4 @@
-いわゆるMERN環境です。
+いわゆるMERNスタック環境です。
 
 - MongoDB: データベースとして使用
 - Express.js: Node.js上で動作するWebアプリケーションフレームワーク
