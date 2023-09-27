@@ -1,0 +1,3 @@
+FROM mongo-express
+
+RUN npm install -g cross-env
