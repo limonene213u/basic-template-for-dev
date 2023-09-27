@@ -1,0 +1,23 @@
+#Node.js側
+# backend/Dockerfile
+
+# Node.jsの公式イメージをベースにするにゃ
+FROM node:14
+
+# アプリケーションディレクトリを作成するにゃ
+WORKDIR /usr/src/app
+
+# 依存関係のファイルをコピーするにゃ
+COPY package*.json ./
+
+# 依存関係をインストールするにゃ
+RUN npm install
+
+# アプリケーションのソースをコピーするにゃ
+COPY . .
+
+# ポートを開放するにゃ
+EXPOSE 3000
+
+# アプリケーションを起動するコマンドを指定するにゃ
+CMD ["npm", "start"]
