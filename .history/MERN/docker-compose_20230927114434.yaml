@@ -34,9 +34,8 @@ services:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
     volumes:
-      - ./mongodb/initdb.d:/docker-entrypoint-initdb.d
-      - ./mongo-data:/data/db
-      
+      - mongo-data:/data/db
+
   mongo-express:
     build:
       context: .
