@@ -28,13 +28,6 @@ services:
 
   mongo:
     image: mongo:latest
-    build:
-      context: .
-      dockerfile: Dockerfile.mongo
-    ulimits:
-      nofile:
-        soft: 65536
-        hard: 65536
     ports:
       - "27017:27017"
     environment:
@@ -43,7 +36,6 @@ services:
     volumes:
       - ./mongodb/initdb.d:/docker-entrypoint-initdb.d
       - ./mongodb/mongo-data:/data/db
-
 
   mongo-express:
     build:
