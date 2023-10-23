@@ -11,6 +11,7 @@ services:
       - "80:80"
     volumes:
       - ./www:/var/www/html
+      - ./apache-config.conf:/etc/apache2/conf-available/apache-config.conf
     #restart: always
 
   db:
